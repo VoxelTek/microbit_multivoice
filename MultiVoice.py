@@ -6,18 +6,6 @@ import music
 freqs = []
 freqlength = 0
 
-# ----------------NEED TO REDO----------------
-#while True: #Detects if the length of the list is too long.
-#    if len(freqs) > 10:
-#        while len(freqs) > 10: #If the list is too long, it checks for zeros and removes them.
-#            for numb in range(len(freqs)):
-#                if freqs[numb] == 0:
-#                    break
-#                else:
-#                    del freqs[-1]
-# ----------------NEED TO REDO----------------
-
-
 
 while True:
     #Plays the frequencies.
