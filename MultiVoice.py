@@ -3,9 +3,8 @@ from microbit import *
 import music
 
 #Initialises the variables and lists.
-freqs = [55, 0, 77, 0, 0, 0]
+freqs = []
 freqlength = 0
-
 
 while True:
     #Plays the frequencies.
