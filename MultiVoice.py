@@ -14,6 +14,9 @@ current-note = 0 #Stores the note that the program is currently at.
 temp-loc = 0 #Temporary variable for storing the current position the program is at.
 temp-pos = 0
 
+start_time = 0
+time_temp = 0
+
 notelist = [] #List of the notes that will be played.
 notestart = [] #Records when the notes start.
 noteend = [] #Records when the notes end.
@@ -24,6 +27,8 @@ notewait-loc = [] #Remembers the position of the currently playing notes in "fre
 
 
 while True:
+    start_time = time.time() / 1000
+    time = time_temp - start_time
     notecheck()
     #Plays the frequencies.
     for length in range(len(freqs)): # Repeats for all items in the list.
@@ -38,14 +43,21 @@ while True:
 
 def notecheck():
     for notelength in range(len(notewait)):
+        time_temp = time.time / 1000
+        time = time_temp - start_time
         if noteend(notewait) == time or noteend(notewait) > time:
             del freqs[notewait-loc[notelength]]
             del notewait-loc[notelength]
             del notewait[notelength]
-    for loop in range(len(notelist) - current-note):
-        temp-loc = - + loop
-        temp-pos = -1
-        for frequencylength in range(len(freqs)):
-            if freqs[frequencylength] == 0:
-                temp-pos = frequencylength
-        insert(temp-pos)
+            for loop in range(len(notelist) - current-note):
+                temp-loc = - + loop
+                temp-pos = -1
+                for frequencylength in range(len(freqs)):
+                    if freqs[frequencylength] == 0:
+                        temp-pos = frequencylength
+                insert(temp-pos)
+                current-note =
+
+def ordercheck():
+    for notelistlength in range(len(notelist)):
+        if notelist[notelistlength] > notelist[notelistlength - 1]:
