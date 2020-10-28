@@ -7,9 +7,13 @@ freqs = [] #Stores the currently playing frequencies.
 
 freqlength = 0 #Used as a temp variable for if there are too many voices
 
+time = 0
+
 notelist = []
 notestart = []
 noteend = []
+notewait = []
+notewait-loc = []
 
 
 while True:
@@ -26,4 +30,6 @@ while True:
 
 
 def notecheck():
-    
+    for notelength in range(len(notewait)):
+        if noteend(notewait) == time or noteend(notewait) > time:
+            
