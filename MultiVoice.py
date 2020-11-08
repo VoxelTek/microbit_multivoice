@@ -14,8 +14,6 @@ current-note = 0 #Stores the note that the program is currently at.
 temp-loc = 0 #Temporary variable for storing the current position the program is at.
 temp-pos = 0
 
-start_time = 0
-time_temp = 0
 
 notelist = [] #List of the notes that will be played.
 notestart = [] #Records when the notes start.
@@ -27,8 +25,6 @@ notewait-loc = [] #Remembers the position of the currently playing notes in "fre
 
 
 while True:
-    start_time = time.time() / 1000
-    time = time_temp - start_time
     notecheck()
     #Plays the frequencies.
     for length in range(len(freqs)): # Repeats for all items in the list.
@@ -39,12 +35,11 @@ while True:
             if freqs[length] != 0: #Checks if the current item in freqs is 0. If so, skip.
                 freqlength = freqlength + 1
                 music.pitch(freqs[length], 10) #Plays a normal note, from the current pitch selected from the "freqs" list.
+                time = time + 10
 
 
 def notecheck():
     for notelength in range(len(notewait)):
-        time_temp = time.time / 1000
-        time = time_temp - start_time
         if noteend(notewait) == time or noteend(notewait) > time:
             del freqs[notewait-loc[notelength]]
             del notewait-loc[notelength]
