@@ -20,7 +20,7 @@ notestart = [] #Records when the notes start.
 noteend = [] #Records when the notes end.
 
 
-notewait = [] #Remembers what notes are currently playing.
+notewait-time = [] #Remembers what notes are currently playing.
 notewait-loc = [] #Remembers the position of the currently playing notes in "freqs".
 
 
@@ -39,20 +39,24 @@ while True:
 
 
 def notecheck():
-    for notelength in range(len(notewait)):
-        if noteend(notewait) == time or noteend(notewait) > time:
-            del freqs[notewait-loc[notelength]]
-            del notewait-loc[notelength]
-            del notewait[notelength]
-            for loop in range(len(notelist) - current-note):
-                temp-loc = - + loop
-                temp-pos = -1
-                for frequencylength in range(len(freqs)):
-                    if freqs[frequencylength] == 0:
-                        temp-pos = frequencylength
-                insert(temp-pos)
-                current-note =
+    endadd = False
+    for length in range(len(notewait-time)):
+        if notewait-time[length] == time or if notewait-time[length] < time:
+            if notewait-time != -1:
+                    freqs[notewait-loc[length]] = 0
+                    notewait-loc[length] = -1
+                    notewait-time[length] = -1
 
-def ordercheck():
-    for notelistlength in range(len(notelist)):
-        if notelist[notelistlength] > notelist[notelistlength - 1]:
+    if notestart[current_note] <= time:
+        for length in range(len(freqs)):
+            if freqs[length] == 0:
+                endadd = True
+                freqs.insert(length, notelist[current_note])
+                for i in range(len(notewait-time)):
+                    if notewait-time[i] == -1:
+                        notewait-time.insert(i, noteend[current_note])
+                        notewait-loc.insert(i, length)
+                    else:
+                        notewait-time.append(noteend[current_note])
+                        notewait-loc.append(length)
+                
