@@ -14,18 +14,18 @@ time = 0
 while True:
     notescheck()
     freqscheck()
-    for loop in range(freqs):
+    for loop in range(len(freqs):
         music.pitch(freqs[loop][0], 10)
 
 
 def notescheck():
-    if notes[note_time][2] = time:
+    if notes[note_time][1] <= time:
         freqs.append(notes[note_time])
         note_time = note_time + 1
         notecheck()
 
 
 def freqscheck():
-    if freqs[0][2] = time:
-        freqs.del(0)
-        freqscheck()
+    for length in repeat(len(freqs)):
+        if freqs[length][2] <= time:
+            freqs.del(length)
